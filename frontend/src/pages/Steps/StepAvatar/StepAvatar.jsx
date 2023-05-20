@@ -6,7 +6,7 @@ const StepAvatar = ({onNext}) => {
       <div>Avatar component</div>
       <button onClick={onNext}>Next</button>
     </>
-  )
-}
+  );
+};
 
 export default StepAvatar
