@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const StepUsername = ({onNext}) => {
+const StepUsername = ({ onNext }) => {
   return (
     <>
-      <div>Phone or Email component</div>
+      <div>User name component</div>
       <button onClick={onNext}>Next</button>
     </>
-  )
-}
+  );
+};
 
-export default StepUsername
+export default StepUsername;

@@ -3,7 +3,7 @@ import React from 'react'
 const StepPhoneEmail = ({onNext}) => {
   return (
     <>
-      <div> component</div>
+      <div> Phone Email component</div>
       <button onClick={onNext}>Next</button>
     </>
   )
