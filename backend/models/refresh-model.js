@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const refreshSchema = new Schema({
     token: {type: String, required: true},
     userId: { types: Schema.Types.ObjectId, ref: 'User'}, 
-}, {
+},
+{
     timestamps : true
 });
 
