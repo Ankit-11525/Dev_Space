@@ -5,7 +5,6 @@ const DbConnect = require('./database');
 const cors = require('cors');
 
 const corsOptions = {
-    Credentials: true,
     origin: ['http://localhost:3000'],
 
 }
