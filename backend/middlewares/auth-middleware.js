@@ -1,9 +1,7 @@
-const AccessToken = require('twilio/lib/jwt/AccessToken');
 const tokenService = require('../services/token-service');
 
 module.exports = async function (req, res, next) {
     try {
-        console.log(AccessToken);
         const { accessToken } = req.cookies;
         if (!accessToken) {
             throw new Error();
