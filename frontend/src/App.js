@@ -13,14 +13,14 @@ import { children } from "react";
 import Rooms from "./pages/Rooms/Rooms";
 import { useSelector } from "react-redux";
 import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
-
+import Loader from './components/shared/Loader/Loader'
 function App() {
 
   // call refresh endpoint
     const { loading } = useLoadingWithRefresh();
 
     return loading ? (
-        'Loading, please wait..'
+      <Loader message="Loading, please wait.." />
     ) : (
       <Router>
         <Navigation />
