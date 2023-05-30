@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setAvatar } from "../../../store/activateSlice";
 import { activate } from "../../../http";
 import { setAuth } from "../../../store/authSlice";
-
+import Loader from "../../../components/shared/Loader/Loader";
 const StepAvatar = ({ onNext }) => {
   const dispatch = useDispatch();
   const { name, avatar } = useSelector((state) => state.activate);
@@ -20,7 +20,9 @@ const StepAvatar = ({ onNext }) => {
       dispatch(setAvatar(reader.result));
     };
   }
+  const [loaderCheck,setloaderCheck]=useState(false);
   async function submit() {
+    setloaderCheck(true);
     try {
       const { data } = await activate({ name, avatar });
       if (data.auth) {
@@ -30,6 +32,13 @@ const StepAvatar = ({ onNext }) => {
     } catch (err) {
       console.log(err);
     }
+    finally{
+      setloaderCheck(false);
+    }
+  }
+  if(loaderCheck)
+  {
+    return <Loader message="Activation in Progress..."/>
   }
   return (
     <>
