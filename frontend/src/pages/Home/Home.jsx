@@ -20,7 +20,7 @@ const Home = () => {
 
     return(
         <div className={styles.cardWrapper}>
-            <Card title="Welcome to DevSpace!" icon="logo">
+            <Card title="Welcome to DevSpace!" icon="Logo">
                 <p className={styles.text}>
                     We’re working hard to get Dev Space ready for everyone!
                     Which we wrap up the finishing youches, we’re adding people

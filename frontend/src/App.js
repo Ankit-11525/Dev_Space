@@ -12,10 +12,16 @@ import Activate from "./pages/Activate/Activate";
 import { children } from "react";
 import Rooms from "./pages/Rooms/Rooms";
 import { useSelector } from "react-redux";
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
 
 function App() {
-  return (
-    <>
+
+  // call refresh endpoint
+    const { loading } = useLoadingWithRefresh();
+
+    return loading ? (
+        'Loading, please wait..'
+    ) : (
       <Router>
         <Navigation />
         <Routes>
@@ -53,7 +59,6 @@ function App() {
 
         </Routes>
       </Router>
-    </>
   );
 }
 
