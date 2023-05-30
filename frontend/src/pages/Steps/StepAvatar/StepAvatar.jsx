@@ -22,6 +22,7 @@ const StepAvatar = ({ onNext }) => {
   }
   const [loaderCheck,setloaderCheck]=useState(false);
   async function submit() {
+    if(!name || !avatar) return ;
     setloaderCheck(true);
     try {
       const { data } = await activate({ name, avatar });
