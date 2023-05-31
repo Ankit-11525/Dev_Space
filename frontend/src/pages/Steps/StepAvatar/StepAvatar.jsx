@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../../components/shared/Card/Card";
 import Button from "../../../components/shared/Button/Button";
 import styles from "./StepAvatar.module.css";
@@ -7,10 +7,15 @@ import { setAvatar } from "../../../store/activateSlice";
 import { activate } from "../../../http";
 import { setAuth } from "../../../store/authSlice";
 import Loader from "../../../components/shared/Loader/Loader";
+
+
 const StepAvatar = ({ onNext }) => {
   const dispatch = useDispatch();
   const { name, avatar } = useSelector((state) => state.activate);
   const [image, setImage] = useState("/images/monkey-avatar.png");
+  const [loaderCheck, setloaderCheck] = useState(false);
+  const [unmounted, setUnmounted] = useState(false);
+
   function captureImage(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -20,26 +25,32 @@ const StepAvatar = ({ onNext }) => {
       dispatch(setAvatar(reader.result));
     };
   }
-  const [loaderCheck,setloaderCheck]=useState(false);
+
   async function submit() {
-    if(!name || !avatar) return ;
+    if (!name || !avatar) return;
     setloaderCheck(true);
     try {
       const { data } = await activate({ name, avatar });
       if (data.auth) {
+        if(unmounted)
         dispatch(setAuth(data));
       }
       console.log(data);
     } catch (err) {
       console.log(err);
-    }
-    finally{
+    } finally {
       setloaderCheck(false);
     }
   }
-  if(loaderCheck)
-  {
-    return <Loader message="Activation in Progress..."/>
+
+  useEffect(() => {
+    return () => {
+      setUnmounted(true);
+    };
+  }, []);
+
+  if (loaderCheck) {
+    return <Loader message="Activation in Progress..." />;
   }
   return (
     <>
