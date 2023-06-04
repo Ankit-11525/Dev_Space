@@ -97,7 +97,8 @@ class AuthController {
             refreshTokenFromCookie
         );
     } catch (err) {
-        return res.status(401).json({ message: 'Invalid Token' });
+        // For review
+        // return res.status(401).json({ message: 'Invalid Token' });
     }
     // Check if token is in db
     try {
