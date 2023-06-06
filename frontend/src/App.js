@@ -9,7 +9,7 @@ import Home from "./pages/Home/Home.jsx";
 import Navigation from "./components/shared/Navigation/Navigation";
 import Authenticate from "./pages/Authenticate/Authenticate";
 import Activate from "./pages/Activate/Activate";
-import { children } from "react";
+// import { children } from "react";
 import Rooms from "./pages/Rooms/Rooms";
 import Room from "./pages/Room/Room"
 import { useSelector } from "react-redux";

@@ -5,7 +5,7 @@ import { createRoom as create } from '../../http';
 import { useNavigate } from 'react-router-dom';
 
 const AddRoomModal = ({onClose}) => {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const [roomType,setRoomType] = useState('open');
     const [topic, setTopic] = useState('');
@@ -14,8 +14,8 @@ const AddRoomModal = ({onClose}) => {
         //server call
         try {
             if(!topic)  return ;
-            const {data} = await create(topic,roomType);
-            history.push('/room/${data.id}');
+            const {data} = await create({topic,roomType});
+            navigate(`/room/${data.id}`);
         } catch (err) {
             console.log(err.message);
         } 
