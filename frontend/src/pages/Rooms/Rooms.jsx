@@ -4,7 +4,7 @@ import RoomCard from "../../components/RoomCard/RoomCard";
 import AddRoomModal from "../../components/AddRoomModal/AddRoomModal";
 import { getAllRooms } from "../../http";
 
-// const rooms = [
+
 //   {
 //     id: 2,
 //     topic: "Which framework is best for frontend ?",
